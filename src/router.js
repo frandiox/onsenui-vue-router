@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Template from './components/Template';
+import store from './store';
 
 Vue.use(Router);
 
@@ -54,15 +55,10 @@ const router = new Router({
   ]
 });
 
-/* For Vuex
- *
- * import store from 'store.js';
- *
- * router.beforeEach((to, from, next) => {
- *   // Reset pageStack to the new route
- *   store.commit('navigator/resetStack', to.matched.map(m => m.components.default));
- *   next();
- * });
- */
+router.beforeEach((to, from, next) => {
+  // Reset pageStack to the new route
+  store.commit('navigator/reset', to.matched.map(m => m.components.default));
+  next();
+});
 
 export default router;
