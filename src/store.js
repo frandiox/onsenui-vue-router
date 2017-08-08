@@ -6,7 +6,6 @@ Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
 const navigator = {
-  strict: true,
   namespaced: true,
 
   state: {
@@ -14,16 +13,12 @@ const navigator = {
   },
 
   getters: {
-    pageStack: (state) => state.stack
+    pageStack: state => state.stack
   },
 
   mutations: {
     reset (state, page) {
-      if (Object.prototype.toString.call(page) === '[object Array]') {
-        state.stack = page
-      } else {
-        state.stack = [page || state.stack[0]]
-      }
+      state.stack = Array.isArray(page) ? page : [page || state.stack[0]];
     }
   }
 }
