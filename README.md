@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+For a Vuex version, check out [`vuex` branch](https://github.com/frandiox/onsenui-vue-router/tree/vuex).
+
 ## Build Setup
 
 ``` bash
